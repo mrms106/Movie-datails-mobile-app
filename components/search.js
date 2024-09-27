@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FlatList, StyleSheet, Text, View,Image } from "react-native";
+import { FlatList, StyleSheet, Text, View,Image,TouchableOpacity } from "react-native";
 import apikey from "./apikey";
 
 export default function Search({ route }){
@@ -33,7 +33,11 @@ useEffect(()=>{
             data={serchdata}
             renderItem={({item,idx })=>
                 <View style={style.mainserch} key={idx}>
+                     <TouchableOpacity 
+                        onPress={() => navigation.navigate('Moviedetails', { movieId: item.id })}
+                    >
                 <Image source={{ uri: `https://image.tmdb.org/t/p/w500/${item.poster_path}` }} style={style.serchimg} />
+                </TouchableOpacity>
                 </View>
         }
             />

@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
-import { Text,Image,View, FlatList, StyleSheet } from "react-native";
+import { Text,Image,View, FlatList, StyleSheet,TouchableOpacity } from "react-native";
 import apikey from "./apikey";
+import { useNavigation } from "@react-navigation/native";
+
 export default function Upcoming(){
+    const navigation=useNavigation()
+
     const [upcomingMovie,setUpcomingMovie]=useState([])
     const getMovieData=async()=>{
                const url = 'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1';
@@ -31,7 +35,11 @@ export default function Upcoming(){
                         showsHorizontalScrollIndicator={true} 
                         data={upcomingMovie}
                         renderItem={({item})=>
+                            <TouchableOpacity 
+                        onPress={() => navigation.navigate('Moviedetails', { movieId: item.id })}
+                    >
                             <Image source={{ uri: `https://image.tmdb.org/t/p/w500/${item.poster_path}` }} style={style.upcomingimage} />
+                       </TouchableOpacity>
                     }
                     snapToAlignment="center"  
                     decelerationRate="fast" 

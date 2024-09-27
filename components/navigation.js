@@ -6,6 +6,7 @@ import { Button,StyleSheet,Text, View, Image,TouchableOpacity, TextInput } from 
 import serch from '../assets/images/search.png'
 import menu from '../assets/images/menu.jpeg'
 import { useState } from "react";
+import Moviedetails from "./moviedetails";
 
 const Stack = createNativeStackNavigator();
 
@@ -68,6 +69,11 @@ export default function Navigation() {
             })
            }
            />
+            <Stack.Screen 
+                    name="Moviedetails" 
+                    component={Moviedetails} 
+                    options={{ title: 'Movie Details' }}
+                />
            </Stack.Navigator>
         </NavigationContainer>
 

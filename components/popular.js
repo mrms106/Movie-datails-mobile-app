@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Text,Image,View, FlatList, StyleSheet } from "react-native";
+import { Text,Image,View, FlatList, StyleSheet,TouchableOpacity } from "react-native";
 import apikey from "./apikey";
 
 export default function Popular(){
@@ -32,7 +32,11 @@ export default function Popular(){
                         showsHorizontalScrollIndicator={true} 
                         data={nowplaying}
                         renderItem={({item})=>
+                            <TouchableOpacity 
+                        onPress={() => navigation.navigate('Moviedetails', { movieId: item.id })}
+                    >
                             <Image source={{ uri: `https://image.tmdb.org/t/p/w500/${item.poster_path}` }} style={style.upcomingimage} />
+                     </TouchableOpacity>
                     }
                     snapToAlignment="center"  
                     decelerationRate="fast" 

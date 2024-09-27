@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { Text,Image,View, FlatList, StyleSheet } from "react-native";
+import { Text,Image,View, FlatList, StyleSheet,TouchableOpacity } from "react-native";
 import apikey from "./apikey";
-
+import { useNavigation } from "@react-navigation/native"; // To use navigation
 export default function trending(){
+    navigation=useNavigation()
     const [moviData,setMovieData]=useState([])
     const getMovieData=async()=>{
         const url = 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1';
@@ -32,7 +33,11 @@ export default function trending(){
                         showsHorizontalScrollIndicator={true} 
                         data={moviData}
                         renderItem={({item})=>
+                            <TouchableOpacity 
+                        onPress={() => navigation.navigate('Moviedetails', { movieId: item.id })}
+                    >
                             <Image source={{ uri: `https://image.tmdb.org/t/p/w500/${item.poster_path}` }} style={style.trendingimage} />
+                        </TouchableOpacity>
                     }
                     contentContainerStyle={style.contentContainer}
                     snapToAlignment="center"  // Snap items to start of scroll view
