@@ -72,7 +72,7 @@ export default function Navigation() {
             <Stack.Screen 
                     name="Moviedetails" 
                     component={Moviedetails} 
-                    options={{ title: 'Movie Details' }}
+                    options={{ headerShown: false }}
                 />
            </Stack.Navigator>
         </NavigationContainer>
