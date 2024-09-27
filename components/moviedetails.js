@@ -1,22 +1,23 @@
 import { useState, useEffect } from "react";
-import { Text, View, Image, StyleSheet,TouchableOpacity,ScrollView } from "react-native";
+import { Text, View, Image, StyleSheet,TouchableOpacity,ScrollView, FlatList } from "react-native";
 import apikey from "./apikey";
 import { useNavigation } from "@react-navigation/native";
 
 export default function Moviedetails({ route }) {
    const { movieId } = route.params; // Get the movieId from route parameters
-   const [moviedetail, setMovieDetail] = useState({});
+   const [moviedetail, setMovieDetail] = useState([]);
+   const [credits,setcredits]=useState({})
    const navigation=useNavigation()
+
+   const options = {
+    method: 'GET',
+    headers: {
+        accept: 'application/json',
+        Authorization: apikey
+    }
+};
    const getMovie = async () => {
        const url = `https://api.themoviedb.org/3/movie/${movieId}`;
-       const options = {
-           method: 'GET',
-           headers: {
-               accept: 'application/json',
-               Authorization: apikey
-           }
-       };
-
        const response = await fetch(url, options);
        if (response.ok) {
            const detail = await response.json();
@@ -24,12 +25,25 @@ export default function Moviedetails({ route }) {
        }
    };
 
+   const getCredits=async()=>{
+    const url = `https://api.themoviedb.org/3/movie/${movieId}/credits?language=en-US`;
+    const response=await fetch(url,options)
+    if(response.ok){
+       const creditdata= await response.json()
+       setcredits(creditdata.cast)
+       
+    }
+   }
+
    useEffect(() => {
-       getMovie();  // Fetch movie details when component loads
+       getMovie();
+       getCredits()
    }, []);
 
    return (
+   
        <View style={styles.container}>
+         <ScrollView>
            <Image 
               source={{ uri: `https://image.tmdb.org/t/p/w500/${moviedetail.poster_path}` }}
               style={styles.movieImage}
@@ -50,8 +64,24 @@ export default function Moviedetails({ route }) {
           </Text>
           </View>
           <Text style={styles.overview}>{moviedetail.overview}  </Text>
+
+        <Text style={{color:'white',fontSize:20,fontFamily:'FiraSans-Medium',marginTop:15,marginLeft:5}}>Top-Cast</Text>
+          <FlatList
+           horizontal={true}
+          data={credits}
+          renderItem={({item})=>
+            <View>
           
+           <Image
+           style={styles.creditimage}
+           source={{uri:`https://image.tmdb.org/t/p/w500/${item.profile_path}`}}
+            />
+             <Text style={styles.credittext}>{item.name}</Text>
+            </View>
+          } />
+          </ScrollView>
        </View>
+       
    );
 }
 
@@ -109,4 +139,18 @@ const styles = StyleSheet.create({
     
         
     },
+    creditimage:{
+        width:110,
+        height:110,
+        borderRadius:55,
+        margin:10,
+        borderWidth:2,
+        borderColor:'white'
+    },
+    credittext:{
+        marginLeft:19,
+        marginRight:10,
+        color:'white',
+        fontFamily:'FiraSans-Medium'
+    }
 });
