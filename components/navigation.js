@@ -7,6 +7,7 @@ import serch from '../assets/images/search.png'
 import menu from '../assets/images/menu.jpeg'
 import { useState } from "react";
 import Moviedetails from "./moviedetails";
+import PersonDetails from "./persondetails";
 
 const Stack = createNativeStackNavigator();
 
@@ -72,6 +73,11 @@ export default function Navigation() {
             <Stack.Screen 
                     name="Moviedetails" 
                     component={Moviedetails} 
+                    options={{ headerShown: false }}
+                />
+                 <Stack.Screen 
+                    name="Persondetails" 
+                    component={PersonDetails} 
                     options={{ headerShown: false }}
                 />
            </Stack.Navigator>

@@ -71,11 +71,14 @@ export default function Moviedetails({ route }) {
           data={credits}
           renderItem={({item})=>
             <View>
-          
+          <TouchableOpacity 
+                        onPress={() => navigation.navigate('Persondetails', { personId: item.id,personname:item.name })}
+                    >
            <Image
            style={styles.creditimage}
            source={{uri:`https://image.tmdb.org/t/p/w500/${item.profile_path}`}}
             />
+            </TouchableOpacity>
              <Text style={styles.credittext}>{item.name}</Text>
             </View>
           } />
