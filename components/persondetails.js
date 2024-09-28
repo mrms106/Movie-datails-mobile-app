@@ -41,22 +41,22 @@ export default function PersonDetails({route}){
                      <Text style={{color:'gray',fontFamily:'FiraSans-Medium'}}>📍 {person.place_of_birth}</Text>
                      <View style={styles.personaldetails}>
                     <View style={styles.pdetailtext}>
-                        <Text style={styles.pdetailtext1}>Gender: </Text>
+                        <Text style={styles.pdetailtext1}>Gender </Text>
                         <Text style={styles.pdetailtext2}>{person && person.gender === 2 ? "Male" : person.gender === 1 ? "Female" : "Unknown"}</Text>
                     </View>
                     <View style={styles.line}></View>
                     <View style={styles.pdetailtext}>
-                        <Text style={styles.pdetailtext1}>Birthday: </Text>
+                        <Text style={styles.pdetailtext1}>Birthday </Text>
                         <Text style={styles.pdetailtext2}>{person && person.birthday ? person.birthday : "N/A"}</Text>
                     </View>
                     <View style={styles.line}></View>
                     <View style={styles.pdetailtext}>
-                        <Text style={styles.pdetailtext1}>Known for: </Text>
+                        <Text style={styles.pdetailtext1}>Known for </Text>
                         <Text style={styles.pdetailtext2}>{person && person.known_for_department ? person.known_for_department : "N/A"}</Text>
                     </View>
                     <View style={styles.line}></View>
                     <View style={styles.pdetailtext}>
-                        <Text style={styles.pdetailtext1}>Popularity: </Text>
+                        <Text style={styles.pdetailtext1}>Popularity </Text>
                         <Text style={styles.pdetailtext2}>{person && person.popularity ? person.popularity.toFixed(2) : "N/A"}</Text>
                     </View>
                 </View>
@@ -95,7 +95,7 @@ const styles=StyleSheet.create({
     },
     personaldetails:{
       flexDirection:'row',
-      backgroundColor:'gray',
+      backgroundColor:'#38393B',
       borderRadius:20,
       alignItems:'center',
       textAlign:'center',
@@ -104,7 +104,9 @@ const styles=StyleSheet.create({
     pdetailtext:{
         color:'white',
         flexDirection:'column',
-        padding:9
+        padding:8,
+        paddingBottom:15,
+        paddingTop:15
        
     },
     pdetailtext1:{
@@ -114,13 +116,13 @@ const styles=StyleSheet.create({
         fontSize:12
     },
     pdetailtext2:{
-        color:'white',
+        color:'lightgray',
         marginLeft:6
     },
     line:{
         width:2,
         height:40,
-        backgroundColor:'black'
+        backgroundColor:'white'
     },
     biographyview:{
         marginTop:20,
