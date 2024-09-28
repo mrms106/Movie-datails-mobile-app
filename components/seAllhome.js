@@ -5,9 +5,9 @@ import apikey from "./apikey";
 export default function Seemore({route}){
     const {type}=route.params
     const[typemovie,settypemovie]=useState([])
-
+   const [count,setcount]=useState(1)
     const getmoremovie=async()=>{
-        const url = `https://api.themoviedb.org/3/movie/${type}?language=en-US&page=2`;
+        const url = `https://api.themoviedb.org/3/movie/${type}?language=en-US&page=${count}`;
         const options = {
                             method: 'GET',
                             headers: {
@@ -23,16 +23,18 @@ export default function Seemore({route}){
     }
     useEffect(()=>{
     getmoremovie()
-    },[])
+    },[count])
     
    
     return(
         <View style={{flex:1,backgroundColor:"#202123"}}>
             <Text style={style.titletext}>{type==="now_playing" ? "Popular": type} movies
             </Text>
+           
            <View style={{alignItems:'center'}}>
            <View style={style.horizontalline}></View>
            </View>
+           <Text style={{textAlign:'center',color:'white'}}>page: {count}</Text>
             
             <FlatList
              numColumns={2}
@@ -50,6 +52,34 @@ export default function Seemore({route}){
             <TouchableOpacity style={style.overlayButton} onPress={() => navigation.goBack()}>
             <Text style={{ color: 'white', fontSize: 23 }}> ❮ </Text>
         </TouchableOpacity>
+        <View style={style.countview}>
+            <Text style={{color:'white'}}>pages : </Text>
+            <TouchableOpacity onPress={()=>setcount(1)}>
+            <Text style={style.counttext}>1</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={()=>setcount(2)}>
+            <Text style={style.counttext}>2</Text>
+            </TouchableOpacity >
+            <TouchableOpacity onPress={()=>setcount(3)}>
+            <Text style={style.counttext}>3</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={()=>setcount(4)}>
+            <Text style={style.counttext}>4</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={()=>setcount(5)}>
+            <Text style={style.counttext}>5</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={()=>setcount(6)}>
+            <Text style={style.counttext}>6</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={()=>setcount(7)}>
+            <Text style={style.counttext}>7</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={()=>setcount(8)}>
+            <Text style={style.counttext}>8</Text>
+            </TouchableOpacity>
+      
+        </View>
         </View>
     )
 }
@@ -88,5 +118,19 @@ const style=StyleSheet.create({
         margin:5,
         marginBottom:20
        
-    }
+    },
+    countview:{
+        alignItems:'center',
+        flexDirection:'row',
+        justifyContent:'center',
+    },
+    counttext:{
+        color:'white',
+        margin:5,
+        fontSize:18,
+        
+        width:14,
+        textAlign:'center',
+        borderRadius:5
+    },
 })
