@@ -1,21 +1,30 @@
-import { Button, StyleSheet, Text, View ,ScrollView} from "react-native";
+import { Button, StyleSheet, Text, View ,ScrollView, TouchableOpacity} from "react-native";
 import Trending from "./trandig";
 import Upcoming from "./upcoming";
 import Toprated from "./topRated";
 import Popular from "./popular";
-export default function Home({navigation}){
+import { useNavigation } from "@react-navigation/native";
 
+export default function Home(){
+const navigation=useNavigation()
    
     return(
         <ScrollView>
         <View style={{flex:1,backgroundColor:'#202123'}}>
            <View style={style.trandingview}> 
             <Text style={style.trending}>
+                
                 Trending
             </Text>
-            <Text style={style.trendingend}>
-                See All
-            </Text>
+           
+           <TouchableOpacity 
+                        onPress={() => navigation.navigate('SeeMore', { type: "popular" })}
+                >
+                     <Text style={style.trendingend}>
+                See More
+                </Text>
+                </TouchableOpacity>
+           
             </View>  
             <Trending/>
             <View style={style.trandingview}> 
@@ -23,7 +32,7 @@ export default function Home({navigation}){
                 Upcoming
             </Text>
             <Text style={style.trendingend}>
-                See All
+                See More
             </Text>
             </View>
             <Upcoming/>
@@ -32,7 +41,7 @@ export default function Home({navigation}){
                 Top-Rated
             </Text>
             <Text style={style.trendingend}>
-                See All
+                See More
             </Text>
             </View>
             <Toprated/>
@@ -41,7 +50,7 @@ export default function Home({navigation}){
                 Popular
             </Text>
             <Text style={style.trendingend}>
-                See All
+                See More
             </Text>
             </View>
             <Popular/>

@@ -8,6 +8,7 @@ import menu from '../assets/images/menu.jpeg'
 import { useState } from "react";
 import Moviedetails from "./moviedetails";
 import PersonDetails from "./persondetails";
+import Seemore from "./seAllhome";
 
 const Stack = createNativeStackNavigator();
 
@@ -79,6 +80,11 @@ export default function Navigation() {
                     name="Persondetails" 
                     component={PersonDetails} 
                     options={{ headerShown: false }}
+                />
+                  <Stack.Screen 
+                    name="SeeMore" 
+                    component={Seemore} 
+                    
                 />
            </Stack.Navigator>
         </NavigationContainer>
