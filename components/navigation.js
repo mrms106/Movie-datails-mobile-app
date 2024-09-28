@@ -84,7 +84,7 @@ export default function Navigation() {
                   <Stack.Screen 
                     name="SeeMore" 
                     component={Seemore} 
-                    
+                    options={{ headerShown: false }}
                 />
            </Stack.Navigator>
         </NavigationContainer>

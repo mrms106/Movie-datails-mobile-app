@@ -28,6 +28,12 @@ export default function Seemore({route}){
    
     return(
         <View style={{flex:1,backgroundColor:"#202123"}}>
+            <Text style={style.titletext}>{type==="now_playing" ? "Popular": type} movies
+            </Text>
+           <View style={{alignItems:'center'}}>
+           <View style={style.horizontalline}></View>
+           </View>
+            
             <FlatList
              numColumns={2}
             data={typemovie}
@@ -41,6 +47,9 @@ export default function Seemore({route}){
                 </View>
         }
             />
+            <TouchableOpacity style={style.overlayButton} onPress={() => navigation.goBack()}>
+            <Text style={{ color: 'white', fontSize: 23 }}> ❮ </Text>
+        </TouchableOpacity>
         </View>
     )
 }
@@ -54,5 +63,30 @@ const style=StyleSheet.create({
     mainserch:{
          padding:20
         
+    },
+    overlayButton: {
+        position: 'absolute',
+        top: 14,  
+        left: 15,  
+        backgroundColor: 'orange', 
+        padding: 10,
+        borderRadius: 15,
+    
+        
+    },
+    titletext:{
+        textAlign:'center',
+        margin:15,
+        color:'white',
+        fontSize:25,
+        fontFamily:'FiraSans-Medium'
+    },
+    horizontalline:{
+        height:2,
+        backgroundColor:'orange',
+        width:250,
+        margin:5,
+        marginBottom:20
+       
     }
 })

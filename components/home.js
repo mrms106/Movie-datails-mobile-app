@@ -16,14 +16,12 @@ const navigation=useNavigation()
                 
                 Trending
             </Text>
-           
            <TouchableOpacity 
-                        onPress={() => navigation.navigate('SeeMore', { type: "popular" })}
-                >
-                     <Text style={style.trendingend}>
+             onPress={() => navigation.navigate('SeeMore', { type: "popular" })}>
+             <Text style={style.trendingend}>
                 See More
-                </Text>
-                </TouchableOpacity>
+             </Text>
+            </TouchableOpacity>
            
             </View>  
             <Trending/>
@@ -31,27 +29,36 @@ const navigation=useNavigation()
             <Text style={style.trending}>
                 Upcoming
             </Text>
-            <Text style={style.trendingend}>
+            <TouchableOpacity 
+             onPress={() => navigation.navigate('SeeMore', { type: "upcoming" })}>
+             <Text style={style.trendingend}>
                 See More
-            </Text>
+             </Text>
+            </TouchableOpacity>
             </View>
             <Upcoming/>
             <View style={style.trandingview}> 
             <Text style={style.trending}>
                 Top-Rated
             </Text>
-            <Text style={style.trendingend}>
+            <TouchableOpacity 
+             onPress={() => navigation.navigate('SeeMore', { type: "top_rated" })}>
+             <Text style={style.trendingend}>
                 See More
-            </Text>
+             </Text>
+            </TouchableOpacity>
             </View>
             <Toprated/>
             <View style={style.trandingview}> 
             <Text style={style.trending}>
                 Popular
             </Text>
-            <Text style={style.trendingend}>
+            <TouchableOpacity 
+             onPress={() => navigation.navigate('SeeMore', { type: "now_playing" })}>
+             <Text style={style.trendingend}>
                 See More
-            </Text>
+             </Text>
+            </TouchableOpacity>
             </View>
             <Popular/>
         </View>
