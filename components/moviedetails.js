@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Text, View, Image, StyleSheet,TouchableOpacity,ScrollView, FlatList } from "react-native";
 import apikey from "./apikey";
 import { useNavigation } from "@react-navigation/native";
+import SimilarMovie from "./similarmovie";
 
 export default function Moviedetails({ route }) {
    const { movieId } = route.params; // Get the movieId from route parameters
@@ -82,6 +83,8 @@ export default function Moviedetails({ route }) {
              <Text style={styles.credittext}>{item.name}</Text>
             </View>
           } />
+          <Text style={styles.similartext}>Similar Movies</Text>
+          <SimilarMovie movieId={movieId}/>
           </ScrollView>
        </View>
        
@@ -154,6 +157,12 @@ const styles = StyleSheet.create({
         marginLeft:19,
         marginRight:10,
         color:'white',
+        fontFamily:'FiraSans-Medium'
+    },
+    similartext:{
+        color:'white',
+        fontSize:20,
+        margin:15,
         fontFamily:'FiraSans-Medium'
     }
 });
