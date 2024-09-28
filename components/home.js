@@ -19,7 +19,7 @@ const navigation=useNavigation()
            <TouchableOpacity 
              onPress={() => navigation.navigate('SeeMore', { type: "popular" })}>
              <Text style={style.trendingend}>
-                See More
+                See All
              </Text>
             </TouchableOpacity>
            
@@ -32,7 +32,7 @@ const navigation=useNavigation()
             <TouchableOpacity 
              onPress={() => navigation.navigate('SeeMore', { type: "upcoming" })}>
              <Text style={style.trendingend}>
-                See More
+                See All
              </Text>
             </TouchableOpacity>
             </View>
@@ -44,7 +44,7 @@ const navigation=useNavigation()
             <TouchableOpacity 
              onPress={() => navigation.navigate('SeeMore', { type: "top_rated" })}>
              <Text style={style.trendingend}>
-                See More
+                See All
              </Text>
             </TouchableOpacity>
             </View>
@@ -56,7 +56,7 @@ const navigation=useNavigation()
             <TouchableOpacity 
              onPress={() => navigation.navigate('SeeMore', { type: "now_playing" })}>
              <Text style={style.trendingend}>
-                See More
+                See All
              </Text>
             </TouchableOpacity>
             </View>
