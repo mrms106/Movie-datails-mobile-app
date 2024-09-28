@@ -41,12 +41,12 @@ export default function Navigation() {
                                 />
                             </TouchableOpacity>
                         ),
-                        headerLeft: () => (
-                            <Image
-                                source={menu} // Path to the image
-                                style={style.image}
-                            />
-                        ),
+                        // headerLeft: () => (
+                        //     <Image
+                        //         source={menu} // Path to the image
+                        //         style={style.image}
+                        //     />
+                        // ),
                     })}
                 />
             
