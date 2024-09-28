@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import apikey from "./apikey";
 import { StyleSheet, View ,Image,Text,TouchableOpacity, ScrollView} from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import Personrecomandation from "./personrecomondation";
 export default function PersonDetails({route}){
     const navigation=useNavigation()
     const { personId,personname } = route.params;
@@ -65,6 +66,8 @@ export default function PersonDetails({route}){
                     <Text style={styles.biographyhead}>Biography</Text>
                     <Text style={styles.biographybody}>{person.biography}</Text>
                    </View>
+                   <Text style={styles.movietext}>Movies</Text>
+                   <Personrecomandation creditId={person.id}/>
                    </ScrollView>
             </View>
         </>
@@ -143,5 +146,11 @@ const styles=StyleSheet.create({
         borderRadius: 15,
     
         
+    },
+    movietext:{
+        color:'white',
+        fontSize:25,
+        fontFamily:"FiraSans-Medium",
+        margin:15
     }
 })

@@ -38,7 +38,7 @@ export default function Moviedetails({ route }) {
    useEffect(() => {
        getMovie();
        getCredits()
-   }, []);
+   }, [movieId]);
 
    return (
    
