@@ -49,7 +49,7 @@ export default function Moviedetails({ route }) {
               source={{ uri: `https://image.tmdb.org/t/p/w500/${moviedetail.poster_path}` }}
               style={styles.movieImage}
            />
-             <TouchableOpacity style={styles.overlayButton} onPress={()=>navigation.navigate("Home")}>
+             <TouchableOpacity style={styles.overlayButton} onPress={() => navigation.goBack()}>
             <Text style={{ color: 'white', fontSize: 23 }}> ❮ </Text>
         </TouchableOpacity>
           <View style={styles.detail}>

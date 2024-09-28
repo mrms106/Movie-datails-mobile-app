@@ -16,9 +16,9 @@ export default function SimilarMovie({movieId}){
        const responce=await fetch(url,options)
           if(responce.ok){
             const data= await responce.json()
-            console.warn(data)
+           
             setsimilarmovie(data.results)
-            console.warn(similarmovie)
+           
           }
     }
     useEffect(()=>{

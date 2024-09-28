@@ -30,7 +30,7 @@ export default function PersonDetails({route}){
         <>
             <View style={{flex:1,backgroundColor:"#202123"}}>
         <ScrollView>
-        <TouchableOpacity style={styles.overlayButton} onPress={()=>navigation.navigate("Home")}>
+        <TouchableOpacity style={styles.overlayButton} onPress={() => navigation.goBack()}>
             <Text style={{ color: 'white', fontSize: 23 }}> ❮ </Text>
         </TouchableOpacity>
                 <View style={styles.maindetail}>
