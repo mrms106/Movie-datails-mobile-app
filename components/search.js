@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { FlatList, StyleSheet, Text, View,Image,TouchableOpacity } from "react-native";
 import apikey from "./apikey";
+import serchimage from '../assets/images/serchsection.png'
 
 export default function Search({ route }){
     const { search } = route.params;
@@ -28,6 +29,19 @@ useEffect(()=>{
 },[search])
     return(
         <View style={{flex:1,backgroundColor:"#202123"}}>
+             <View style={{alignItems:'center',justifyContent:'center',flex:1}}>
+             { 
+              !serchdata.length && !search.length?
+                     <Image
+                     source={serchimage} style={style.serchimage}/> :""
+            }{
+                !serchdata.length0 && search.length ?<Text  style={{color:'white',margin:10,fontSize:18}}>No result found for your search,  search correctly...</Text>:""
+            }
+             </View>
+             
+             {
+                serchdata.length ? <Text style={{color:'white',margin:10,fontSize:18}}>Result({serchdata.length})</Text>:""
+             }
             <FlatList
              numColumns={2}
             data={serchdata}
@@ -54,5 +68,9 @@ const style=StyleSheet.create({
     mainserch:{
          padding:20
         
+    },
+    serchimage:{
+        width:350,
+        height:250
     }
 })

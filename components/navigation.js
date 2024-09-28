@@ -41,12 +41,7 @@ export default function Navigation() {
                                 />
                             </TouchableOpacity>
                         ),
-                        // headerLeft: () => (
-                        //     <Image
-                        //         source={menu} // Path to the image
-                        //         style={style.image}
-                        //     />
-                        // ),
+                        
                     })}
                 />
             
@@ -102,8 +97,8 @@ const style=StyleSheet.create({
         marginBottom:20
     },
     middleTxt:{
-      marginTop:-20,
-      fontSize:25,
+      marginTop:-10,
+      fontSize:30,
       color:'white',
       fontFamily:'FiraSans-Black'
     },
