@@ -16,9 +16,9 @@ export default function Personrecomandation({creditId}){
        const responce=await fetch(url,options)
           if(responce.ok){
             const data= await responce.json()
-            console.warn(data)
+            
             setrocomandation(data.cast)
-            console.warn(rocomandation)
+           
           }
     }
     useEffect(()=>{
@@ -38,12 +38,14 @@ export default function Personrecomandation({creditId}){
                         onPress={() => navigation.navigate('Moviedetails', { movieId: item.id })}
                     >
                             <Image source={{ uri: `https://image.tmdb.org/t/p/w500/${item.poster_path}` }} style={style.upcomingimage} />
+                            <Text style={style.moviname}>{item.title} </Text>
                      </TouchableOpacity>
+                     
                     }
                     snapToAlignment="center"  
                     decelerationRate="fast" 
                      />
-                    
+                        
                     </View>
              
         </>
@@ -57,4 +59,10 @@ const style = StyleSheet.create({
         marginRight:10,
          borderRadius:10
     },
+    moviname:{
+        // marginRight:10,
+        color:'white',
+        textAlign:'center',
+
+    }
 })

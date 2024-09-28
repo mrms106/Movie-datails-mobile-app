@@ -38,6 +38,7 @@ export default function SimilarMovie({movieId}){
                         onPress={() => navigation.navigate('Moviedetails', { movieId: item.id })}
                     >
                             <Image source={{ uri: `https://image.tmdb.org/t/p/w500/${item.poster_path}` }} style={style.upcomingimage} />
+                            <Text style={style.moviname}>{item.title}</Text>
                      </TouchableOpacity>
                     }
                     snapToAlignment="center"  
@@ -57,4 +58,10 @@ const style = StyleSheet.create({
         marginRight:10,
          borderRadius:10
     },
+    moviname:{
+        // marginRight:10,
+        color:'white',
+        textAlign:'center',
+
+    }
 })
