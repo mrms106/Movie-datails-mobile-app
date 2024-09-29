@@ -3,10 +3,12 @@ import apikey from "./apikey";
 import { StyleSheet, View ,Image,Text,TouchableOpacity, ScrollView} from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Personrecomandation from "./personrecomondation";
+import Loader from "./loader";
 export default function PersonDetails({route}){
     const navigation=useNavigation()
     const { personId,personname } = route.params;
     const [person,setperson]=useState({})
+    const[loader,setloader]=useState(true)
     const fetchPerson=async()=>{
                 const url = `https://api.themoviedb.org/3/person/${personId}?language=en-US`;
                 const options = {
@@ -18,6 +20,7 @@ export default function PersonDetails({route}){
                 }
         const responce= await fetch(url,options)
         if(responce.ok){
+            setloader(false)
                 const persondetail=await responce.json()
                 setperson(persondetail)
                
@@ -26,6 +29,11 @@ export default function PersonDetails({route}){
     useEffect(()=>{
         fetchPerson()
     },[])
+    if(loader){
+        return(
+            <Loader size={90}/>
+        )
+    }
     return(
         <>
             <View style={{flex:1,backgroundColor:"#202123"}}>
