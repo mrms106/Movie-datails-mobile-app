@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { Text,Image,View, FlatList, StyleSheet,TouchableOpacity } from "react-native";
 import apikey from "./apikey";
+import Loader from "./loader";
 
 export default function Toprated(){
     const [topratedmovie,seTopratedmovie]=useState([])
+    const[loader,setloader]=useState(true)
     const getMovieData=async()=>{
         const url = 'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1';
                 const options = {
@@ -15,6 +17,7 @@ export default function Toprated(){
                         };
        const responce=await fetch(url,options)
           if(responce.ok){
+            setloader(false)
             const data= await responce.json()
             seTopratedmovie(data.results)
           }
@@ -22,7 +25,11 @@ export default function Toprated(){
     useEffect(()=>{
     getMovieData()
     },[])
-    
+    if(loader){
+        return(
+            <Loader size={40}/>
+        )
+    }
     return(
         <>
          

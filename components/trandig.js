@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { Text,Image,View, FlatList, StyleSheet,TouchableOpacity } from "react-native";
 import apikey from "./apikey";
 import { useNavigation } from "@react-navigation/native"; // To use navigation
+import Loader from "./loader";
 export default function trending(){
     navigation=useNavigation()
     const [moviData,setMovieData]=useState([])
+    const[loader,setloader]=useState(true)
     const getMovieData=async()=>{
         const url = 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1';
         const options = {
@@ -16,6 +18,7 @@ export default function trending(){
                         };
        const responce=await fetch(url,options)
           if(responce.ok){
+            setloader(false)
             const data= await responce.json()
             setMovieData(data.results)
           }
@@ -23,7 +26,11 @@ export default function trending(){
     useEffect(()=>{
     getMovieData()
     },[])
-    
+    if(loader){
+        return(
+            <Loader size={40}/>
+        )
+    }
     return(
         <>
          

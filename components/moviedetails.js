@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
-import { Text, View, Image, StyleSheet,TouchableOpacity,ScrollView, FlatList } from "react-native";
+import { Text, View, Image, StyleSheet,TouchableOpacity,ScrollView, FlatList, ActivityIndicator } from "react-native";
 import apikey from "./apikey";
 import { useNavigation } from "@react-navigation/native";
 import SimilarMovie from "./similarmovie";
+import Loader from "./loader";
 
 export default function Moviedetails({ route }) {
    const { movieId } = route.params; // Get the movieId from route parameters
    const [moviedetail, setMovieDetail] = useState([]);
    const [credits,setcredits]=useState({})
+   const[loader,setloader]=useState(true)
    const navigation=useNavigation()
 
    const options = {
@@ -30,6 +32,7 @@ export default function Moviedetails({ route }) {
     const url = `https://api.themoviedb.org/3/movie/${movieId}/credits?language=en-US`;
     const response=await fetch(url,options)
     if(response.ok){
+        setloader(false)
        const creditdata= await response.json()
        setcredits(creditdata.cast)
        
@@ -40,7 +43,11 @@ export default function Moviedetails({ route }) {
        getMovie();
        getCredits()
    }, [movieId]);
-
+if(loader){
+    return(
+     <Loader size={100}/>
+    )
+}
    return (
    
        <View style={styles.container}>
