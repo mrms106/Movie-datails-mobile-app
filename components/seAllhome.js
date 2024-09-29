@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { FlatList, StyleSheet, Text, View,Image,TouchableOpacity } from "react-native";
 import apikey from "./apikey";
+import Loader from "./loader";
 
 export default function Seemore({route}){
     const {type}=route.params
     const[typemovie,settypemovie]=useState([])
    const [count,setcount]=useState(1)
+   const[loader,setloader]=useState(true)
     const getmoremovie=async()=>{
         const url = `https://api.themoviedb.org/3/movie/${type}?language=en-US&page=${count}`;
         const options = {
@@ -17,6 +19,7 @@ export default function Seemore({route}){
                         };
        const responce=await fetch(url,options)
           if(responce.ok){
+            setloader(false)
             const data= await responce.json()
             settypemovie(data.results)
           }
@@ -25,7 +28,11 @@ export default function Seemore({route}){
     getmoremovie()
     },[count])
     
-   
+    if(loader){
+        return(
+            <Loader size={60}/>
+        )
+    }
     return(
         <View style={{flex:1,backgroundColor:"#202123"}}>
             <Text style={style.titletext}>{type==="now_playing" ? "Popular": type} movies
