@@ -1,4 +1,4 @@
-import { Button, StyleSheet, Text, View ,ScrollView, TouchableOpacity} from "react-native";
+import { Button, StyleSheet, Text, View ,ScrollView, TouchableOpacity, StatusBar} from "react-native";
 import Trending from "./trandig";
 import Upcoming from "./upcoming";
 import Toprated from "./topRated";
@@ -10,6 +10,8 @@ const navigation=useNavigation()
    
     return(
         <ScrollView>
+            <StatusBar 
+            hidden={true}/>
         <View style={{flex:1,backgroundColor:'#202123'}}>
            <View style={style.trandingview}> 
             <Text style={style.trending}>
