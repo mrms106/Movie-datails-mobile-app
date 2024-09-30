@@ -35,7 +35,7 @@ useEffect(()=>{
                      <Image
                      source={serchimage} style={style.serchimage}/> :""
             }{
-                !serchdata.length0 && search.length ?<Text  style={{color:'white',margin:10,fontSize:18}}>No result found for your search,  search correctly...</Text>:""
+                !serchdata.length && search.length ?<Text  style={{color:'white',margin:10,fontSize:18}}>No result found for your search,  search correctly...</Text>:""
             }
              </View>
              
