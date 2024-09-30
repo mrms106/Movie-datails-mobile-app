@@ -4,13 +4,13 @@ import apikey from "./apikey";
 import { useNavigation } from "@react-navigation/native";
 import Loader from "./loader";
 
-export default function Upcoming(){
+export default function Showmovie({movietype}){
     const navigation=useNavigation()
 
     const [upcomingMovie,setUpcomingMovie]=useState([])
     const[loader,setloader]=useState(true)
     const getMovieData=async()=>{
-               const url = 'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1';
+               const url = `https://api.themoviedb.org/3/movie/${movietype}?language=en-US&page=1`;
                 const options = {
                             method: 'GET',
                             headers: {

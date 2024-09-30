@@ -1,9 +1,7 @@
 import { Button, StyleSheet, Text, View ,ScrollView, TouchableOpacity, StatusBar} from "react-native";
 import Trending from "./trandig";
-import Upcoming from "./upcoming";
-import Toprated from "./topRated";
-import Popular from "./popular";
 import { useNavigation } from "@react-navigation/native";
+import Showmovie from "./showmovieHome";
 
 export default function Home(){
 const navigation=useNavigation()
@@ -38,7 +36,7 @@ const navigation=useNavigation()
              </Text>
             </TouchableOpacity>
             </View>
-            <Upcoming/>
+            <Showmovie movietype="upcoming"/>
             <View style={style.trandingview}> 
             <Text style={style.trending}>
                 Top-Rated
@@ -50,7 +48,7 @@ const navigation=useNavigation()
              </Text>
             </TouchableOpacity>
             </View>
-            <Toprated/>
+            <Showmovie movietype="top_rated"/>
             <View style={style.trandingview}> 
             <Text style={style.trending}>
                 Popular
@@ -62,7 +60,7 @@ const navigation=useNavigation()
              </Text>
             </TouchableOpacity>
             </View>
-            <Popular/>
+            <Showmovie movietype="now_playing"/>
         </View>
         </ScrollView>
     )
