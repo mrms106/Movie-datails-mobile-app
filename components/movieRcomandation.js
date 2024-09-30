@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { Text,Image,View, FlatList, StyleSheet,TouchableOpacity } from "react-native";
 import apikey from "./apikey";
 
-export default function Personrecomandation({creditId}){
+export default function movieRecomandation({type,Id,recomandation}){
     const [rocomandation,setrocomandation]=useState([])
     const getMovieData=async()=>{
-        const url =  `https://api.themoviedb.org/3/person/${creditId}/movie_credits?language=en-US`
+        // const url =  `https://api.themoviedb.org/3/${type}/${Id}/${recomandation}?language=en-US&page=1`
+        const url = `https://api.themoviedb.org/3/${type}/${Id}/${recomandation}?language=en-US&page=1`;
                 const options = {
                             method: 'GET',
                             headers: {
@@ -16,14 +17,17 @@ export default function Personrecomandation({creditId}){
        const responce=await fetch(url,options)
           if(responce.ok){
             const data= await responce.json()
-            
+            if(type==="movie"){
+                setrocomandation(data.results)
+            }else{
             setrocomandation(data.cast)
+            }
            
           }
     }
     useEffect(()=>{
     getMovieData()
-    },[creditId])
+    },[type,Id,recomandation])
     
     return(
         <>

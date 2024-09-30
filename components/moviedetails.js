@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Text, View, Image, StyleSheet,TouchableOpacity,ScrollView, FlatList, ActivityIndicator } from "react-native";
 import apikey from "./apikey";
 import { useNavigation } from "@react-navigation/native";
-import SimilarMovie from "./similarmovie";
+import RocomandedMovie from "./movieRcomandation";
 import Loader from "./loader";
 
 export default function Moviedetails({ route }) {
@@ -91,7 +91,7 @@ if(loader){
             </View>
           } />
           <Text style={styles.similartext}>Similar Movies</Text>
-          <SimilarMovie movieId={movieId}/>
+          <RocomandedMovie type="movie" Id={movieId} recomandation="similar" />
           </ScrollView>
        </View>
        
