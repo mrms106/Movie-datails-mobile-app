@@ -2,9 +2,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "./home";
 import Search from "./search";
-import { Button,StyleSheet,Text, View, Image,TouchableOpacity, TextInput } from "react-native";
+import { StyleSheet,Text, View, Image,TouchableOpacity, TextInput } from "react-native";
 import serch from '../assets/images/search.png'
-import menu from '../assets/images/menu.jpeg'
 import { useState } from "react";
 import Moviedetails from "./moviedetails";
 import PersonDetails from "./persondetails";

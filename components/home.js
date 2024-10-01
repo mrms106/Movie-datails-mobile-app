@@ -1,4 +1,4 @@
-import { Button, StyleSheet, Text, View ,ScrollView, TouchableOpacity, StatusBar} from "react-native";
+import { View ,ScrollView, TouchableOpacity, StatusBar} from "react-native";
 import Trending from "./trandig";
 import Showmovie from "./showmovieHome";
 import HomeElements from "./homeelements";

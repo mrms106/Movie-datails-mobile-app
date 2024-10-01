@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Text, View, Image, StyleSheet,TouchableOpacity,ScrollView, FlatList, ActivityIndicator } from "react-native";
+import { Text, View, Image, StyleSheet,TouchableOpacity,ScrollView, FlatList } from "react-native";
 import apikey from "./apikey";
 import { useNavigation } from "@react-navigation/native";
 import RocomandedMovie from "./movieRcomandation";

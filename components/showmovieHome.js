@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Text,Image,View, FlatList, StyleSheet,TouchableOpacity } from "react-native";
+import { Image,View, FlatList, StyleSheet,TouchableOpacity } from "react-native";
 import apikey from "./apikey";
 import { useNavigation } from "@react-navigation/native";
 import Loader from "./loader";
@@ -61,7 +61,6 @@ const style = StyleSheet.create({
     upcomingimage:{
         width: 150,
          height: 240,
-        //  margin:10,
         marginRight:10,
          borderRadius:10
     },
